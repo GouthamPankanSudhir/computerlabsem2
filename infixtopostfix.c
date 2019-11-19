@@ -1,15 +1,19 @@
 #include<stdio.h>
 #include<string.h>
-int s[30],p[30];
-int n,top=-1,count=0;
+#include<ctype.h>
+char s[30],p[30],q[30];
+int top=-1,count=0;
 void pop(){
 	p[++count]=s[top--];
 }
-char push(char a){
+void push(char a){
 	s[++top]=a;
 }
-char add(char a){
+void add(char a){
 	p[count++]=a;
+}
+void delete(){
+	top--;
 }
 int priority(char a){
 	if(a=='+'||'-')
@@ -18,23 +22,36 @@ int priority(char a){
 		return 2;
 	else if(a=='^')
 		return 3;
+	else if(a=='(')
+		return 0;
 }
-void evaluate(char a){
-	in
-}
-void main()
+main()
 {
-	int len,countpost;
-	char q[30];
+	int i;
 	printf("Enter the infix expression : ");
 	scanf("%s",&q);
-	len=strlen(q);
-	q[l]=')';
-	s[0]='(';
-	for(int i=0;i<len;i++);
+	for(i=0;q[i]!='\0';i++)
 	{
-		if(!isalnum(q[i]))
-			evaluate(q[i]);
-	
+		if(isalnum(q[i]))
+			add(q[i]);
+		else if(q[i]=='(')
+			push(q[i]);
+		else if(q[i]==')')
+		{
+			while(priority(s[top])!=0){
+				pop();
+			}	
+			delete();
+		}
+		else
+		{
+			while(priority(s[top])>=priority(q[i])){
+				pop();
+			}
+			push(q[i]);
+		}
 	}
+	printf("This is the postfix expression : ");
+	for(i=0;p[i]!='\0';i++)
+		printf("%c",p[i]);
 }

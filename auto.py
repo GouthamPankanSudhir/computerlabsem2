@@ -1,3 +1,4 @@
+chmod + x auto.py
 git add .
 rm -r a.out
 git config --global user.name "Goutham Pankan Sudhir"
