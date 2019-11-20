@@ -1,6 +1,6 @@
 #include<stdio.h>
 void insert(int key, int parent, int tree[50]){
-	if(tree[parent]=='\0')
+	if(tree[parent]==NULL)
 		tree[parent]=key;	
 	else if(key>tree[parent])
 		insert(key,((parent*2)+2),tree);
@@ -8,8 +8,10 @@ void insert(int key, int parent, int tree[50]){
 		insert(key,((parent*2)+1),tree);
 }
 void main(){
-	char ch='y';
-	int x,parent,tree[50];
+	char ch='n';
+	int i,x,parent,tree[50];
+	for(i=0;i<50;i++)
+		tree[i]=NULL;
 	printf("Enter the root element : ");
 	scanf("%d",&x);
 	tree[0]=x;
@@ -23,7 +25,7 @@ void main(){
 	}while(ch!='n');	
 	printf("This is the binary search tree : \n");
 	for(int i=0;i<50;i++){
-		if(tree[i]!='\0')
+		if(tree[i]!=NULL)
 			printf("%d-",tree[i]);
 	}
 }
