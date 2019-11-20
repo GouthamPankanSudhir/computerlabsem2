@@ -22,7 +22,7 @@ void main(){
 		insert(x,0,tree);		
 		printf("Do you want to insert another element : (y/n)");
 		scanf("%c",&ch);	
-	}while(ch!='n');	
+	}while(ch!='n'||'N');	
 	printf("This is the binary search tree : \n");
 	for(int i=0;i<50;i++){
 		if(tree[i]!=NULL)
